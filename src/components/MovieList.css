@@ -1,0 +1,14 @@
+.MovieList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Movie {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.CategoryTitle {
+    margin-left: 20px;
+}
