@@ -1,0 +1,13 @@
+.MoviePageWrapper {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+.BigPoster {
+    height: 50vh;
+}
+
+.MovieInfo {
+    padding: 0 40px;
+}

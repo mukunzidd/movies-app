@@ -4,6 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Movie from "./components/Movie";
+import Navbar from "./components/Navbar.js";
 
 const client = new ApolloClient({
   uri: " https://movies-graphq.herokuapp.com/",
@@ -13,7 +16,13 @@ const client = new ApolloClient({
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ApolloProvider client={client}>
-    <App />
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/movies/:id" element={<Movie />} />
+      </Routes>
+    </BrowserRouter>
   </ApolloProvider>
 );
 
