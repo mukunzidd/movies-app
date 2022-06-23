@@ -40,8 +40,8 @@ export default function AddMovie() {
       title: movie.title,
       released: movie.released,
       rating: parseInt(movie.released),
+      // TODO: split string into an array of strings
       genre: [movie.genre],
-      //   genre: movie.genre.split(","),
       description: movie.description,
       duration: parseInt(movie.duration),
       poster: movie.poster,
@@ -54,7 +54,6 @@ export default function AddMovie() {
     setMovie((values) => ({ ...values, [inputName]: value }));
   };
 
-  if (loading) console.log("Submitting");
   if (error) console.log("Something Wrong Happened");
 
   return (
