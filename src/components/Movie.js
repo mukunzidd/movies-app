@@ -1,8 +1,9 @@
 import React from "react";
-import { gql, useQuery } from "@apollo/client";
-
-import { useParams } from "react-router-dom";
+import { gql, useQuery, useMutation } from "@apollo/client";
+import { useNavigate, useParams } from "react-router-dom";
 import ContentLoader from "react-content-loader";
+
+import { GET_MOVIES } from "../queries";
 
 const GET_MOVIE = gql`
   query GetMovie($movieId: ID!) {
@@ -19,10 +20,28 @@ const GET_MOVIE = gql`
   }
 `;
 
+const DELETE_MOVIE = gql`
+  mutation DeleteMovie($deleteMovieId: String) {
+    deleteMovie(id: $deleteMovieId) {
+      id
+    }
+  }
+`;
+
 export default function Movie() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const { loading, error, data } = useQuery(GET_MOVIE, {
     variables: { movieId: id },
+  });
+  const [deleteMovie] = useMutation(DELETE_MOVIE, {
+    variables: { deleteMovieId: id },
+    onError: (error) => alert(error.message),
+    refetchQueries: [
+      {
+        query: GET_MOVIES,
+      },
+    ],
   });
 
   if (loading)
@@ -57,12 +76,23 @@ export default function Movie() {
   return (
     <div className="MoviePageWrapper">
       <img src={poster} className="BigPoster" alt="Movie Poster" />
+      <div
+        onClick={async () => {
+          await deleteMovie();
+          console.log("DELETED");
+          navigate("/");
+        }}
+        className="DeleteIcon"
+      >
+        <span role="img" aria-label="delete icon">
+          🗑
+        </span>
+      </div>
       <div className="MovieInfo">
         <p>Came out in {released}</p>
         <h2>{title}</h2>
         <p>{description}</p>
         <p>IMDB Rating: {rating}</p>
-        {/* Make Genre a list */}
         <p>Genre: {genre.toString()}</p>
         <p>Playtime: {duration} minutes</p>
       </div>

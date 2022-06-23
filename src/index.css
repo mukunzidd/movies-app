@@ -114,3 +114,18 @@ input[type='submit']{
 .MovieInfo {
   padding: 0 40px;
 }
+
+.DeleteIcon {
+  color: transparent;  
+  text-shadow: 0 0 0 red;
+  cursor: pointer;
+  position: absolute;
+  right: 2rem;
+  padding: 1rem;
+  transition: transform 300ms ease-out;
+}
+
+.DeleteIcon:hover {
+  transform: scale(1.5);
+  transition: transform 300ms ease-in;
+}
