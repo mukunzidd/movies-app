@@ -1,7 +1,6 @@
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
 
-import "./Movie.css";
 import { useParams } from "react-router-dom";
 
 const GET_MOVIE = gql`

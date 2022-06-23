@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import reportWebVitals from "./reportWebVitals";
+import "./index.css";
+import App from "./App";
 import Movie from "./components/Movie";
 import Navbar from "./components/Navbar.js";
+import AddMovie from "./components/AddMovie";
 
 const client = new ApolloClient({
   uri: " https://movies-graphq.herokuapp.com/",
@@ -21,6 +23,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/movies/:id" element={<Movie />} />
+        <Route path="/movies/new" element={<AddMovie />} />
       </Routes>
     </BrowserRouter>
   </ApolloProvider>

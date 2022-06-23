@@ -2,8 +2,6 @@ import { gql, useQuery } from "@apollo/client";
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./MovieList.css";
-
 const GET_MOVIES = gql`
   query GetMovies {
     movies {
@@ -32,8 +30,8 @@ export default function MovieList() {
         {data.movies.map(({ id, title, released, poster }, i) => {
           return (
             <Link to={`/movies/${id}`} key={i} className="Movie">
-              <img src={poster} alt="Movie Poster" />
-              <h3>{title}</h3>
+              <img src={poster} className="MoviePoster" alt="Movie Poster" />
+              <p className="MovieTitle">{title}</p>
               <p>Came out in {released}</p>
             </Link>
           );

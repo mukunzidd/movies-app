@@ -13,13 +13,104 @@ code {
     monospace;
 }
 
-.Home {
-  text-decoration: none;
-  transition: all 300ms ease-in-out;
-  position: absolute;
-  top: 0
+/* Movie Form */
+.MovieForm {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.Home:hover {
-  font-size: 120%;
+input{
+  width: 50vw;
+  padding: .5rem;
+  margin: .5rem 0;
+}
+
+input[type='submit']{
+  background: navy;
+  color: whitesmoke;
+  align-self: start;
+  padding: .5rem 2rem;
+  width: fit-content;
+}
+
+/* Navbar */
+.Link {
+  text-decoration: none;
+  transition: all 300ms ease-in-out;
+  background: white;
+  color: black;
+  background: whitesmoke;
+  color: navy;
+  border: 1px solid navy;
+  padding: .5rem 1rem;
+  margin: 2rem 1rem;
+}
+
+.Link:hover {
+  background: navy;
+  color: whitesmoke;
+}
+
+.NavWrapper {
+  margin: 1rem 2rem;
+}
+
+/* Homepage */
+.MovieList {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 2rem;
+}
+
+.Movie {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px;
+  padding: 10px;
+  text-decoration: none;
+  color:rgb(47, 47, 47);
+  box-shadow:  0px 12px 15px -10px rgb(35, 35, 35);
+  transition: all 300ms ease-in-out;
+  width: 200px;
+}
+
+.Movie:hover {
+  text-decoration: none;
+  box-shadow:  0px 12px 24px 0px rgba(0, 0, 0, 0.5);
+  transition: all 300ms ease-in-out;
+}
+
+.MoviePoster {
+  max-height: 300px;
+  max-width: 200px;
+  width: auto;
+  width: auto;
+
+}
+
+.CategoryTitle {
+  margin-left: 3rem;
+}
+
+.MovieTitle {
+  white-space: pre-wrap;
+  overflow-wrap: normal;
+  font-weight: 700;
+  font-size:medium;
+}
+
+/* Single Movie Page */
+.MoviePageWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+.BigPoster {
+  height: 50vh;
+}
+
+.MovieInfo {
+  padding: 0 40px;
 }
