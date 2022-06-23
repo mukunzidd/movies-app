@@ -6,7 +6,7 @@ import { ADD_MOVIE, GET_MOVIES } from "../queries";
 export default function AddMovie() {
   const navigate = useNavigate();
   const [movie, setMovie] = useState({});
-  const [addMovie, { loading, error }] = useMutation(ADD_MOVIE, {
+  const [addMovie, { loading }] = useMutation(ADD_MOVIE, {
     variables: {
       title: movie.title,
       released: movie.released,
@@ -18,7 +18,7 @@ export default function AddMovie() {
       poster: movie.poster,
     },
     onError: (error) => alert("An Error Happened: ", error),
-    updateQueries: [
+    refetchQueries: [
       {
         query: GET_MOVIES,
       },
