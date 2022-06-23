@@ -1,22 +1,8 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import React from "react";
 import ContentLoader from "react-content-loader";
 import { Link } from "react-router-dom";
-
-const GET_MOVIES = gql`
-  query GetMovies {
-    movies {
-      id
-      title
-      released
-      rating
-      genre
-      description
-      duration
-      poster
-    }
-  }
-`;
+import { GET_MOVIES } from "../queries";
 
 export default function MovieList() {
   const { loading, error, data } = useQuery(GET_MOVIES);

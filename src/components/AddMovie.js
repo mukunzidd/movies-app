@@ -1,37 +1,8 @@
 import React, { useState } from "react";
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
+import { ADD_MOVIE, GET_MOVIES } from "../queries";
 
-const ADD_MOVIE = gql`
-  mutation AddMovie(
-    $title: String
-    $released: String
-    $rating: Int
-    $genre: [String]
-    $description: String
-    $duration: Int
-    $poster: String
-  ) {
-    postMovie(
-      title: $title
-      released: $released
-      rating: $rating
-      genre: $genre
-      description: $description
-      duration: $duration
-      poster: $poster
-    ) {
-      id
-      title
-      released
-      genre
-      rating
-      description
-      duration
-      poster
-    }
-  }
-`;
 export default function AddMovie() {
   const navigate = useNavigate();
   const [movie, setMovie] = useState({});
@@ -41,11 +12,17 @@ export default function AddMovie() {
       released: movie.released,
       rating: parseInt(movie.released),
       // TODO: split string into an array of strings
-      genre: [movie.genre],
+      genre: movie.genre,
       description: movie.description,
       duration: parseInt(movie.duration),
       poster: movie.poster,
     },
+    onError: (error) => alert("An Error Happened: ", error),
+    updateQueries: [
+      {
+        query: GET_MOVIES,
+      },
+    ],
   });
 
   const handleChange = (event) => {
@@ -53,8 +30,6 @@ export default function AddMovie() {
     const value = event.target.value;
     setMovie((values) => ({ ...values, [inputName]: value }));
   };
-
-  if (error) console.log("Something Wrong Happened");
 
   return (
     <form
